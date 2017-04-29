@@ -4,7 +4,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<head><script src="http://code.jquery.com/jquery-1.9.1.js"></script></head>
 <body>
 
 <?php
@@ -21,29 +20,44 @@ if ($_SESSION["username"] != "") {
 
 <br /><br />
 <p>Enter your favorite color and food.</p>
-<form id="fav" role = "form" action = "/" method = "post">
+<form role = "form" action = "" method = "post">
     Color: <input type = "text" name = "favColor"></br>
     Food:  <input type = "text" name = "favFood"></br>
     <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
 </form>
 
-
+<br />
 <?php 
-//read the session for color and favorite food
+// read the session for color and favorite food
 if (isset($_POST['favColor'])) {
-	$_SESSION['favColor'].Clear();
 	$_SESSION['favColor'] = $_POST['favColor'];
+	localStorage.setItem("favColor", $_SESSION['favColor']);
 }
 if (isset($_POST['favFood'])) {
-	$_SESSION['favFood'].Clear();
 	$_SESSION['favFood'] = $_POST['favFood'];
+	localStorage.setItem("favFood", $_SESSION['favFood']);
 }
 ?>
 
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("favColor", $_SESSION['favColor']);
+    localStorage.setItem("favFood", $_SESSION['favFood']);
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("favColor");
+    document.getElementById("result2").innerHTML = localStorage.getItem("favFood");
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
 <p>
-	Your favorite color is: <?php echo $_SESSION['favColor'];?>
+	Your favorite color is: <div id="result"></div>
 	<br /><br />
-	Your favorite food is: <?php echo $_SESSION['favFood'];?>
+	Your favorite food is: <div id="result2"></div>
 </p>
 
 <br /><br />
