@@ -11,7 +11,11 @@ session_start();
 // Read the sessions
 if ($_SESSION["username"] != "") {
 	echo "<br>Hello ";
-    echo $_SESSION["username"];
+	if ($_SESSION["name"] != "") {
+		echo $_SESSION["name"];
+	} else {
+		echo $_SESSION["username"];	
+	}
 ?>
 
 <h1>Valid User</h1>
@@ -19,6 +23,12 @@ You are a valid user. Here is your reward!!!<br />
 
 <img src="https://az616578.vo.msecnd.net/files/2015/09/27/635789781274697208191557841_tumblr_lxcavjCQC81qcj7k0o5_r1_250-1.gif">
 
+<br /><br />
+<form role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method = "post">
+    <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
+    <input type = "text" name = "name" autofocus></br>
+    <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
+</form>
 
 <br /><br />
 <a href="clearsessions.php">Clear Sessions</a>
@@ -37,13 +47,8 @@ You are a valid user. Here is your reward!!!<br />
 Police are coming
 <img src="http://66.media.tumblr.com/tumblr_lne9okrwkN1qdvbl3o1_500.jpg"> <br />
 
-
-
-
-	<?php
+<?php
 }
-
-
 ?>
 
 
