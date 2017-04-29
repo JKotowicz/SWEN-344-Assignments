@@ -21,8 +21,8 @@ if(localStorage){
     		localStorage.setItem("color", color);
     		localStorage.setItem("food", food);
 
-    		document.querySelector('.myColor').innerHTML = localStorage.getItem("color");
-			document.querySelector('.myFood').innerHTML = localStorage.getItem("food");
+    		//document.querySelector('.myColor').innerHTML = localStorage.getItem("color");
+			//document.querySelector('.myFood').innerHTML = localStorage.getItem("food");
 		});
 		
 	});
