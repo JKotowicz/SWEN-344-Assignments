@@ -22,7 +22,7 @@ if ($_SESSION["username"] != "") {
 <p>Enter your favorite color and food.</p>
 <form role = "form" action = "" method = "post">
     Color: <input type = "text" name = "favColor"></br>
-    Food: <input type = "text" name = "favFood"></br>
+    Food:  <input type = "text" name = "favFood"></br>
     <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
 </form>
 
