@@ -31,11 +31,11 @@ if ($_SESSION["username"] != "") {
 // read the session for color and favorite food
 if (isset($_POST['favColor'])) {
 	$_SESSION['favColor'] = $_POST['favColor'];
-	localStorage.setItem("favColor", $_SESSION['favColor']);
+	localStorage.setItem("favColor", $_POST['favColor']);
 }
 if (isset($_POST['favFood'])) {
 	$_SESSION['favFood'] = $_POST['favFood'];
-	localStorage.setItem("favFood", $_SESSION['favFood']);
+	localStorage.setItem("favFood", $_POST['favFood']);
 }
 ?>
 

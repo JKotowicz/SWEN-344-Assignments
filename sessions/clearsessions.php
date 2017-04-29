@@ -12,7 +12,7 @@ session_start();
 <?php
 // Set session variables
 $_SESSION["username"] = "";
-
+$_SESSION['name'] = "";
 ?>
 
 <a href="index.php">Return to login.</a>
