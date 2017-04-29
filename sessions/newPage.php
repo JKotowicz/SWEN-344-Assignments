@@ -44,13 +44,13 @@ if (isset($_POST['favFood'])) {
 if (typeof(Storage) !== "undefined") {
     // Store
     localStorage.setItem("favColor", $_SESSION['favColor']);
-    localStorage.setItem("favFood", $_SESSION['favFood']);
+    //localStorage.setItem("favFood", $_SESSION['favFood']);
     // Retrieve
     document.getElementById("result").innerHTML = localStorage.getItem("favColor");
-    document.getElementById("result2").innerHTML = localStorage.getItem("favFood");
+    //document.getElementById("result2").innerHTML = localStorage.getItem("favFood");
 } else {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-    document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Storage...";
+    //document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Storage...";
 }
 </script>
 
