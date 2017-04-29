@@ -35,7 +35,7 @@ You are a valid user. Here is your reward!!!<br />
 <a href="clearsessions.php">Clear Sessions</a>
 
 
-<br />
+<br /><br />
 <a href="session2.php">Another page</a>
 
 

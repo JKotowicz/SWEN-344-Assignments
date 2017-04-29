@@ -31,11 +31,11 @@ if ($_SESSION["username"] != "") {
 <script>
 // Store
 	var inputColor = document.getElementById("favColor");
-	localStorage.setItem("color", inputEmail.value);
+	localStorage.setItem("color", inputColor.value);
 	var fColor = localStorage.getItem("color");
 
-	var inputColor = document.getElementById("favFood");
-	localStorage.setItem("food", inputEmail.value);
+	var inputFood = document.getElementById("favFood");
+	localStorage.setItem("food", inputFood.value);
 	var fFood = localStorage.getItem("food");
 
 	document.querySelector('.result').innerHTML = fColor;
