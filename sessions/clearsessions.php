@@ -15,7 +15,7 @@ $_SESSION["username"] = "";
 
 ?>
 
-
+<a href="index.php">Return to login.</a>
 
 
 </body>
