@@ -3,26 +3,32 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+<meta charset="utf-8">
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
 // Check if the localStorage object exists
 if(localStorage){
-	$(".sub").click(function(){
-		// Get input color
-		var color = $("#favColor").val();
-		// Get input Food
-		var food = $("#favFood").val();
+	$(document).ready(function(){
+		$(".saveInfo").click(function(){
+			// Get input color
+			var color = $("#favColor").val();
+			// Get input Food
+			var food = $("#favFood").val();
 
-		// Store data
-		localStorage.setItem("color", color);
-		localStorage.setItem("food", food);
+			// Store data
+    		localStorage.setItem("color", color);
+    		localStorage.setItem("food", food);
 
-		//document.querySelector('.myColor').innerHTML = localStorage.getItem("color");
-		//document.querySelector('.myFood').innerHTML = localStorage.getItem("food");
-	
+    		$(".getInfo").click(function() {
+    			alert("Your favorite color is, " + localStorage.getItem("color") + " and your favorite food is, " + localStorage.getItem("food"));
+    		});
+		});
+		
 	});
 } else{
     alert("Sorry, your browser do not support local storage.");
@@ -47,19 +53,13 @@ if ($_SESSION["username"] != "") {
 <br /><br />
 <p>Enter your favorite color and food.</p>
 <form role = "form" action = "" method = "post">
-    Color: <input type = "text" name = "favColor" id="favColor" required></br>
-    Food:  <input type = "text" name = "favFood" id="favFood" required></br>
-    <button class="sub" type="submit" name="submit">Submit</button>
+    <label>Color: <input type="text" id="favColor" required></label></br>
+    <label>Food:  <input type="text" id="favFood" required></label></br>
+    <button class="saveInfo" type="button">Save Info</button>
+    <button class="getInfo" type="button">Get Info</button>
 </form>
 
 <br />
-
-<p>Your locally stored info.</p>
-<div>
-	Your favorite color is: <p class="myColor"></p>
-	<br /><br />
-	Your favorite food is: <p id="myFood"></p>
-</div>
 
 <br /><br />
 <a href="clearsessions.php">Clear Sessions</a>
