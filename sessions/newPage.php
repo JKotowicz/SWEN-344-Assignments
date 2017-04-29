@@ -28,6 +28,8 @@ if ($_SESSION["username"] != "") {
 
 <br />
 
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 <script>
 // Store
 $(document).ready( function() {
