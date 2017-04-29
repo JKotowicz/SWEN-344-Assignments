@@ -27,13 +27,15 @@ if ($_SESSION["username"] != "") {
     <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
 </form>
 
-<br />
+
 <?php 
 //read the session for color and favorite food
 if (isset($_POST['favColor'])) {
+	$_SESSION['favColor'].Clear();
 	$_SESSION['favColor'] = $_POST['favColor'];
 }
 if (isset($_POST['favFood'])) {
+	$_SESSION['favFood'].Clear();
 	$_SESSION['favFood'] = $_POST['favFood'];
 }
 ?>
