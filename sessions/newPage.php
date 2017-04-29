@@ -4,6 +4,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+<head><script src="http://code.jquery.com/jquery-1.9.1.js"></script></head>
 <body>
 
 <?php
@@ -20,7 +21,7 @@ if ($_SESSION["username"] != "") {
 
 <br /><br />
 <p>Enter your favorite color and food.</p>
-<form role = "form" action = "" method = "post">
+<form id="fav" role = "form" action = "" method = "post">
     Color: <input type = "text" name = "favColor"></br>
     Food:  <input type = "text" name = "favFood"></br>
     <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
@@ -36,6 +37,30 @@ if (isset($_POST['favFood'])) {
 	$_SESSION['favFood'] = $_POST['favFood'];
 }
 ?>
+
+<script type='text/javascript'>
+    /* attach a submit handler to the form */
+    $("#fav").submit(function(event) {
+
+      /* stop form from submitting normally */
+      event.preventDefault();
+
+      /* get the action attribute from the <form action=""> element */
+      var $form = $( this ),
+          url = $form.attr( 'action' );
+
+      /* Send the data using post with element id name and name2*/
+      var posting = $.post( url, { Color: $('#favColor').val(), Food: $('#favFood').val() } );
+
+      /* Alerts the results */
+      posting.done(function( data ) {
+        alert('success');
+      });
+    });
+</script>
+
+
+
 <p>
 	Your favorite color is: <?php echo $_SESSION['favColor'];?>
 	<br /><br />
