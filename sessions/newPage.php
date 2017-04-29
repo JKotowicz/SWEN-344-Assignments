@@ -40,24 +40,20 @@ if (isset($_POST['favFood'])) {
 ?>
 
 <script>
-// Check browser support
-if (typeof(Storage) !== "undefined") {
-    // Store
-    localStorage.setItem("favColor", $_SESSION['favColor']);
+// Store
+	localStorage.setItem("favColor", $_SESSION['favColor']);
     //localStorage.setItem("favFood", $_SESSION['favFood']);
     // Retrieve
     document.getElementById("result").innerHTML = localStorage.getItem("favColor");
     //document.getElementById("result2").innerHTML = localStorage.getItem("favFood");
-} else {
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+//    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
     //document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Storage...";
-}
 </script>
 
 <p>
 	Your favorite color is: <div id="result"></div>
 	<br /><br />
-	Your favorite food is: <div id="result2"></div>
+	Your favorite food is: <div id=""></div>
 </p>
 
 <br /><br />
