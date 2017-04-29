@@ -27,28 +27,16 @@ if ($_SESSION["username"] != "") {
     <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
 </form>
 
-
-
-<script type='text/javascript'>
-    /* attach a submit handler to the form */
-    $("#fav").submit(function(event) {
-
-      	/* stop form from submitting normally */
-      	event.preventDefault();
-
-      	<?php 
-	  	//read the session for color and favorite food
-		if (isset($_POST['favColor'])) {
-			$_SESSION['favColor'] = $_POST['favColor'];
-		}
-		if (isset($_POST['favFood'])) {
-			$_SESSION['favFood'] = $_POST['favFood'];
-		}
-		?>
-    });
-</script>
-
-
+<br />
+<?php 
+//read the session for color and favorite food
+if (isset($_POST['favColor'])) {
+	$_SESSION['favColor'] = $_POST['favColor'];
+}
+if (isset($_POST['favFood'])) {
+	$_SESSION['favFood'] = $_POST['favFood'];
+}
+?>
 
 <p>
 	Your favorite color is: <?php echo $_SESSION['favColor'];?>
