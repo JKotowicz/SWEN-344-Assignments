@@ -4,6 +4,32 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+// Check if the localStorage object exists
+if(localStorage){
+	$(document).ready(function(){
+		$(".sub").click(function(){
+			// Get input color
+			var color = $("#favColor").val();
+			// Get input Food
+			var food = $("#favFood").val();
+
+			// Store data
+    		localStorage.setItem("color", color);
+    		localStorage.setItem("food", food);
+		});
+		document.querySelector('.myColor').innerHTML = color;
+		document.querySelector('.myFood').innerHTML = food;
+	});
+} else{
+    alert("Sorry, your browser do not support local storage.");
+}
+</script>
+</head>
+
 <body>
 
 <?php
@@ -23,32 +49,12 @@ if ($_SESSION["username"] != "") {
 <form role = "form" action = "" method = "post">
     Color: <input type = "text" name = "favColor" id="favColor" required></br>
     Food:  <input type = "text" name = "favFood" id="favFood" required></br>
-    <button class = "sub" type = "submit" name = "submit">Submit</button>
+    <button class="sub" type="submit" name="submit">Submit</button>
 </form>
 
 <br />
 
-
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-<script>
-// Store
-$(document).ready( function() {
-     $('.sub').on('click', function() {
- 
-		var inputColor = document.getElementById("favColor");
-		localStorage.setItem("color", inputColor.value);
-		var fColor = localStorage.getItem("color");
-
-		var inputFood = document.getElementById("favFood");
-		localStorage.setItem("food", inputFood.value);
-		var fFood = localStorage.getItem("food");
-
-		document.querySelector('.result').innerHTML = fColor;
-		document.querySelector('.result2').innerHTML = fFood;
-	});
-}); 
-</script>
-
+<p>Your locally stored info.</p>
 <div>
 	Your favorite color is: <p class="result"></p>
 	<br /><br />
