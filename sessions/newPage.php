@@ -21,8 +21,8 @@ if(localStorage){
     		localStorage.setItem("color", color);
     		localStorage.setItem("food", food);
 		});
-		document.querySelector('.myColor').innerHTML = color;
-		document.querySelector('.myFood').innerHTML = food;
+		document.querySelector('.myColor').innerHTML = localStorage.getItem("color");
+		document.querySelector('.myFood').innerHTML = localStorage.getItem("food");
 	});
 } else{
     alert("Sorry, your browser do not support local storage.");
@@ -56,9 +56,9 @@ if ($_SESSION["username"] != "") {
 
 <p>Your locally stored info.</p>
 <div>
-	Your favorite color is: <p class="result"></p>
+	Your favorite color is: <p class="myColor"></p>
 	<br /><br />
-	Your favorite food is: <p id="result2"></p>
+	Your favorite food is: <p id="myFood"></p>
 </div>
 
 <br /><br />
