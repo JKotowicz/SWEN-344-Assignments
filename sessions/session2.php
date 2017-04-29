@@ -26,6 +26,7 @@ if ($_SESSION["username"] != "") {
 
 ?>
 
+<a href="newPage.php">Something Else Cool</a>
 
 
 

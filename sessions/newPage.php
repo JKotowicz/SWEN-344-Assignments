@@ -10,10 +10,21 @@ session_start();
 
 // Read the sessions
 if ($_SESSION["username"] != "") {
+	echo "<br>Hello ";
+	if ($_SESSION["name"] != "") {
+		echo $_SESSION["name"];
+	} else {
+		echo $_SESSION["username"];	
+	}
+?>
 
-	echo "<h1>Hello ";
-    echo $_SESSION["username"];
-    echo "<h2> ";
+<br /><br />
+<a href="clearsessions.php">Clear Sessions</a>
+
+
+
+
+<?php  
 }else{
 ?>
 
@@ -26,7 +37,6 @@ if ($_SESSION["username"] != "") {
 
 ?>
 
-<a href="newPage.php">Something Else Cool</a>
 
 
 

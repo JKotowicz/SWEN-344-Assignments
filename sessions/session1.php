@@ -24,8 +24,8 @@ You are a valid user. Here is your reward!!!<br />
 <img src="https://az616578.vo.msecnd.net/files/2015/09/27/635789781274697208191557841_tumblr_lxcavjCQC81qcj7k0o5_r1_250-1.gif">
 
 <br /><br />
+<p>Enter what name you would like to be refered as.</p>
 <form role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method = "post">
-    <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
     <input type = "text" name = "name" autofocus></br>
     <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
 </form>
@@ -50,12 +50,6 @@ Police are coming
 <?php
 }
 ?>
-
-
-
-
-
-
 
 
 </body>
