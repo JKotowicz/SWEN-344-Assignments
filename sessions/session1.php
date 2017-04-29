@@ -11,7 +11,8 @@ session_start();
 // Read the sessions
 if ($_SESSION["username"] != "") {
 	echo "<br>Hello ";
-	if ($_SESSION["name"] != "") {
+	if (isset($_POST['submit'])) {
+		$_SESSION['name'] = $_POST['name'];
 		echo $_SESSION["name"];
 	} else {
 		echo $_SESSION["username"];	
@@ -25,8 +26,8 @@ You are a valid user. Here is your reward!!!<br />
 
 <br /><br />
 <p>Enter what name you would like to be refered as.</p>
-<form role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method = "post">
-    <input type = "text" name = "name" autofocus></br>
+<form role = "form" action = "" method = "post">
+    <input type = "text" name = "name"></br>
     <button class = "btn btn-lg btn-primary btn-block" type = "submit" name = "submit">Submit</button>
 </form>
 
