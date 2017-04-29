@@ -43,7 +43,7 @@ $(document).ready( function() {
 
 		document.querySelector('.result').innerHTML = fColor;
 		document.querySelector('.result2').innerHTML = fFood;
-	}
+	});
 }); 
 </script>
 
