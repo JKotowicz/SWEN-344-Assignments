@@ -10,21 +10,19 @@ session_start();
 <script type="text/javascript">
 // Check if the localStorage object exists
 if(localStorage){
-	$(document).ready(function(){
-		$(".sub").click(function(){
-			// Get input color
-			var color = $("#favColor").val();
-			// Get input Food
-			var food = $("#favFood").val();
+	$(".sub").click(function(){
+		// Get input color
+		var color = $("#favColor").val();
+		// Get input Food
+		var food = $("#favFood").val();
 
-			// Store data
-    		localStorage.setItem("color", color);
-    		localStorage.setItem("food", food);
+		// Store data
+		localStorage.setItem("color", color);
+		localStorage.setItem("food", food);
 
-    		//document.querySelector('.myColor').innerHTML = localStorage.getItem("color");
-			//document.querySelector('.myFood').innerHTML = localStorage.getItem("food");
-		});
-		
+		//document.querySelector('.myColor').innerHTML = localStorage.getItem("color");
+		//document.querySelector('.myFood').innerHTML = localStorage.getItem("food");
+	
 	});
 } else{
     alert("Sorry, your browser do not support local storage.");
