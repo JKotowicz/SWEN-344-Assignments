@@ -23,9 +23,9 @@ if(localStorage){
 			// Store data
     		localStorage.setItem("color", color);
     		localStorage.setItem("food", food);
-
+    		alert("You have saved your favorite color and food.")
     		$(".getInfo").click(function() {
-    			alert("Your favorite color is, " + localStorage.getItem("color") + " and your favorite food is, " + localStorage.getItem("food"));
+    			alert("Your favorite color is: " + localStorage.getItem("color") + ". Your favorite food is: " + localStorage.getItem("food"));
     		});
 		});
 		
