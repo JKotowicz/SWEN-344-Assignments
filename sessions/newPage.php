@@ -41,7 +41,7 @@ if (isset($_POST['favFood'])) {
 
 <script>
 // Store
-	localStorage.setItem("favColor", $_SESSION['favColor']);
+	localStorage.setItem("favColor", $_POST['favColor']);
     //localStorage.setItem("favFood", $_SESSION['favFood']);
     // Retrieve
     document.getElementById("result").innerHTML = localStorage.getItem("favColor");
