@@ -49,11 +49,11 @@ $(document).ready( function() {
 }); 
 </script>
 
-<p>
-	Your favorite color is: <div class="result"></div>
+<div>
+	Your favorite color is: <p class="result"></p>
 	<br /><br />
-	Your favorite food is: <div id="result2"></div>
-</p>
+	Your favorite food is: <p id="result2"></p>
+</div>
 
 <br /><br />
 <a href="clearsessions.php">Clear Sessions</a>
