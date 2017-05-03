@@ -1,6 +1,5 @@
 .row {
-    padding: 100px;
-    background-color: #e3e3e3; 
+    padding: 100px; 
 }
 
 .row-height {
@@ -15,4 +14,8 @@
 
 .col-md-12, .col-sm-10 {
 	background-color: blue;
+}
+
+body {
+	background-color: gray;
 }
