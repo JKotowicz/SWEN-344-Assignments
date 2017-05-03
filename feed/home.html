@@ -23,49 +23,43 @@
 <body>
 <!-- Page Header -->
 <div class="container-fluid">
-    <div class="row">
-    	<div class="col-md-12 col-sm-10">
-	      	<div class="container text-center">
-	        	<h5>Welcome to Jeffrey Kotowicz's News Feed</h5>
-	      	</div>
-	    </div>
+	<div id="header-container" class="col-md-12 col-sm-10">
+      	<div class="container text-center">
+        	<h5>Welcome to Jeffrey Kotowicz's News Feed</h5>
+      	</div>
     </div>
 </div>
 <!-- Page Content -->
 <div class="container">
     <!-- Login/Signup Containers -->
 	<div class="row justify-content-md-center">
-		<div class="col-sm-6">	
-	      	<div id="login-container">
-	          	<form id="login-form" method="POST">
-	          		<div class="input-group input-group-sm">
-			            <span class="input-group-addon" id="username-addon">username:</span>
-			            <input type="text" class="form-control form-control-sm" placeholder="username" name="userName" required>
-			            <span class="input-group-addon" id="password-addon">password:</span>
-			            <input type="password" class="form-control form-control-sm" placeholder="password" name="pWord" required>
-			        </div>
-			        <br />
-		            <button class="btn btn-info" type="submit">Login</button>
-	          	</form>
-	        </div>
-	    </div>
+      	<div id="login-container" class="col-sm-6 col-md-6">
+          	<form id="login-form" method="POST">
+          		<div class="input-group input-group-sm">
+		            <span class="input-group-addon" id="username-addon">username:</span>
+		            <input type="text" class="form-control form-control-sm" placeholder="username" name="userName" required>
+		            <span class="input-group-addon" id="password-addon">password:</span>
+		            <input type="password" class="form-control form-control-sm" placeholder="password" name="pWord" required>
+		        </div>
+		        <br />
+	            <button class="btn btn-info" type="submit">Login</button>
+          	</form>
+        </div>
 	</div>
 	<div class="row justify-content-md-center">
-		<div class="col-sm-6">
-	        <div id="signup-container">
-		        <form id="signup-form" method="POST">
-		        	<div class="input-group input-group-sm">
-			            <span class="input-group-addon" id="username-addon">username:</span>
-			            <input type="text" class="form-control form-control-sm" placeholder="username" name="Username" required>
-			            <span class="input-group-addon" id="password-addon">password:</span>
-			            <input type="password" class="form-control form-control-sm" placeholder="password" id="password" name="signup-pWord" required>
-			            <span class="input-group-addon" id="password-addon">confirm password:</span>
-			            <input type="password" class="form-control form-control-sm" placeholder="confirm password" id="confirm-pWord" name="confirm-pWord" required>
-		            </div>
-		            <br />
-		            <button class="btn btn-info" type="submit">Sign up</button>
-		        </form>
-			</div>
+        <div id="signup-container" class="col-sm-6 col-md-6">
+	        <form id="signup-form" method="POST">
+	        	<div class="input-group input-group-sm">
+		            <span class="input-group-addon" id="username-addon">username:</span>
+		            <input type="text" class="form-control form-control-sm" placeholder="username" name="Username" required>
+		            <span class="input-group-addon" id="password-addon">password:</span>
+		            <input type="password" class="form-control form-control-sm" placeholder="password" id="password" name="signup-pWord" required>
+		            <span class="input-group-addon" id="password-addon">confirm password:</span>
+		            <input type="password" class="form-control form-control-sm" placeholder="confirm password" id="confirm-pWord" name="confirm-pWord" required>
+	            </div>
+	            <br />
+	            <button class="btn btn-info" type="submit">Sign up</button>
+	        </form>
 		</div>
 	</div>
 </div>
