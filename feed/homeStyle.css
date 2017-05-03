@@ -1,5 +1,6 @@
 .row {
     padding: 100px;
+    background-color: #e3e3e3; 
 }
 
 .row-height {
@@ -8,7 +9,7 @@
     padding-top: 25px;
 }
 
-.col-md-4,.col-sm-8 {
+.col-md-8,.col-sm-6 {
     background-color: #e3e3e3;
 }
 
