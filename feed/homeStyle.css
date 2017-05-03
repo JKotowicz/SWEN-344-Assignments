@@ -11,3 +11,11 @@
 .col-md-4,.col-sm-8 {
     background-color: #e3e3e3;
 }
+
+.container-fluid {
+	background-color: black;
+}
+
+.col-md-12, .col-sm-10 {
+	background-color: blue;
+}
