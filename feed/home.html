@@ -15,56 +15,116 @@
 
 <script type="text/javascript">
 
-if(localStorage){
-	$(document).ready(function(){
-		$(function(){
-	    	$("#login-form").submit(function(event){
-	    		event.preventDefult();
-	      		$.ajax(this.href, {
-	        		success: function(){
-	        			console.log("success");
-	        			var username = $("#Username").val();
-		        		var pWord = $("#Password").val();
-						localStorage.setItem("Username", username);
-						localStorage.setItem("Password", pWord);
-						document.getElementById("feed").removeAttribute("hidden");
-						alert("You're signed in!");
-	        		},
-	        		error: function(){
-	          			console.log("Something went wrong.");
-	          			alert("Something went wrong.");
-	        		}
-	      		});
-	    	});
-	  	});
-	  
-	  	$(function(){
-		    $("#signup-form").submit(function(event){
-		    	event.preventDefult();
-		      	$.ajax(this.href, {
-		        	success: function(){
-		        		console.log("success");
-		        		var username = $("#s-Username").val();
-		        		var sPword = $("#signup-pWord").val();
-		        		var cPword = $("#confirm-pWord").val();
-		        		if(Username !== "" && cPword == sPword) {
-							localStorage.setItem("Username", username);
-							localStorage.setItem("Password", sPword);
-							document.getElementById("feed").removeAttribute("hidden");
-							alert("You're signed in!");
-		        		}
-		        	},
-		        	error: function(){
-		          		console.log("Somthing went wrong.");
-		          		alert("Something went wrong.");
-		        	}
-		      	});
-		    });
-		});
-	});
-} else{
-    alert("Your browser do not support local storage.");
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload;
+			}
+			func();
+		}
+	}
 }
+
+function xmlLoaded(obj){
+	console.log("obj = " +obj);
+	var items = obj.querySelectorAll("item");
+		
+	var html = "";
+	for (var i=0;i<items.length;i++){
+		var newsItem = items[i];
+		var title = newsItem.querySelector("title").firstChild.nodeValue;
+		console.log(title);
+		var link = newsItem.querySelector("link").firstChild.nodeValue;
+			
+		var line = '<div class="item">';
+		line += '<p><i>'+'<a href="'+link+'" target="_blank">'+title+'</a></p>';
+		line += "</div>";
+			
+		html += line;
+	}
+
+	document.querySelector("#rss-feed").innerHTML = html;
+	$("#rss-feed").fadeIn(1000);
+}
+
+addLoadEvent( function() {
+
+	var url = "http://espn.go.com/espn/rss/nhl/news";
+	
+	document.querySelector("#rss-feed").innerHTML = "<b>Loading news...</b>";
+	$("#rss-feed").fadeOut(250);
+	$.get(url).done(function(data){xmlLoaded(data);});
+
+	$('form.login').on('submit', function() {
+		//console.log("login form submitted");
+		//document.getElementById('stuff').removeAttribute('hidden');
+		//event.preventDefult();
+		
+		var obj = $(this),
+		url = obj.attr('action'),
+		type = obj.attr('method'),
+		data = {};
+		
+		obj.find('[name]').each(function(index, value) {
+			var obj = $(this),
+			name = obj.attr('name'),
+			value = obj.val();
+			
+			data[name] = value;
+		});
+		
+		$.ajax({
+			url: url,
+			type: type,
+			data: data,
+			success: function(response){
+				console.log(response);
+				//var username = $("#Username").val();
+				//var pWord = $("#Password").val();
+				//localStorage.setItem("Username", username);
+				//localStorage.setItem("Password", pWord);
+				//document.getElementById('stuff').removeAttribute('hidden');
+				//alert("You're signed in!");
+			},
+			error: function(){
+				console.log("Something went wrong.");
+				alert("Something went wrong.");
+			}
+		});
+		return false;
+	});
+	/*
+	$("#signup-form").submit(function(event){
+		console.log("signup form submitted");
+		//event.preventDefult();
+		document.getElementById('stuff').removeAttribute('hidden');
+		
+		$.ajax({
+			success: function(){
+				console.log("success");
+				var username = $("#s-Username").val();
+				var sPword = $("#signup-pWord").val();
+				var cPword = $("#confirm-pWord").val();
+				if(Username !== "" && cPword == sPword) {
+					localStorage.setItem("Username", username);
+					localStorage.setItem("Password", sPword);
+					document.getElementById("feed").removeAttribute("hidden");
+					alert("You're signed in!");
+				}
+			},
+			error: function(){
+				console.log("Somthing went wrong.");
+				alert("Something went wrong.");
+			}
+		});
+		
+	});
+	*/
+});
 
 </script>
 </head>
@@ -75,7 +135,7 @@ if(localStorage){
 	<div id="header-container" class="header-container justify-content-md-center">
       	<div class="container text-center">
         	<h5>Welcome to Jeffrey Kotowicz's News Feed</h5>
-			<h5>login or signup to start browsing</h5>
+			<h5 id="logTitle" >login or signup to start browsing</h5>
       	</div>
     </div>
 </div>
@@ -84,16 +144,16 @@ if(localStorage){
     <!-- Login/Signup Containers -->
 	<div class="row justify-content-md-center">
       	<div id="login-container" class="lsForm col-md-4 col-sm-4 justify-content-md-center">
-          	<form id="login-form" method="POST">
+          	<form action="info.php" class="login" method="post">
           		<div class="input-group input-group-sm">
 		            <span class="input-group-addon" id="username-addon">Username:</span>
-		            <input type="text" class="form-control form-control-sm" placeholder="Username" name="userName" id="Username" required>
+		            <input type="text" class="form-control form-control-sm" placeholder="Username" name="Username" required>
 				</div><br>
 				<div class="input-group input-group-sm">
 		            <span class="input-group-addon" id="password-addon">Password:</span>
-		            <input type="password" class="form-control form-control-sm" placeholder="Password" name="pWord" id="Password" required>
+		            <input type="password" class="form-control form-control-sm" placeholder="Password" name="Password" required>
 		        </div><br>
-	            <button id="login" class="btn btn-info" type="submit" name="login">Login</button><br>
+	            <input class="btn btn-info" type="submit" value="Login"></input><br>
           	</form>
         </div>
         <div id="signup-container" class="lsForm col-md-4 col-sm-4 justify-content-md-center">
@@ -110,26 +170,22 @@ if(localStorage){
 					<span class="input-group-addon" id="password-addon">Confirm password:</span>
 		            <input type="password" class="form-control form-control-sm" placeholder="Confirm password" id="confirm-pWord" name="confirm-pWord" required>
 	            </div><br>
-	            <button id="signup" class="btn btn-info" type="submit" name="signup">Sign up</button><br>
+	            <button class="btn btn-info" type="submit">Sign up</button><br>
 			</form>
 		</div>
 	</div>
+</div>	
 <!-- News Feed -->
-<div class="container-fluid">
-
-	<!-- Favorite List -->
-	<div class="row">
-		
-	</div>
+<div id="stuff" hidden class="container-fluid">
 	<!-- RSS Feed -->
 	<div class="row">
 		<div class="col-md-10 col-sm-4 justify-content-md-center">
-			<div id="feed" hidden class="rss-container container justify-content-md-center">
+			<div id="feed" class="rss-container container justify-content-md-center text-center">
+				<h1>News Feed</h1>
 				<div id="rss-feed" class="text-center" >Place Holder</div>
 			</div>
 		</div>
-	</div>
-		
+	</div>	
 </div>
 </body>
 </html>
