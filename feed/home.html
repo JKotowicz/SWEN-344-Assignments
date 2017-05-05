@@ -80,13 +80,14 @@ addLoadEvent( function() {
 			data: data,
 			success: function(response){
 				console.log(response);
-				alert("You're signed in!");
 				var username = $("#Username").val();
 				var pWord = $("#Password").val();
 				localStorage.setItem("Username", username);
 				localStorage.setItem("Password", pWord);
 				document.getElementById('inital-forms').attr('hidden');
 				document.getElementById('stuff').removeAttribute('hidden');
+				$('form.login').trigger("reset");
+				alert("You're signed in!");
 			},
 			error: function(){
 				console.log("Something went wrong.");
@@ -126,6 +127,8 @@ addLoadEvent( function() {
 					localStorage.setItem("Password", sPword);
 					document.getElementById('inital-forms').attr('hidden');
 					document.getElementById("feed").removeAttribute("hidden");
+					$('form.signup').trigger("reset");
+					alert("You're signed in!");
 				}
 			},
 			error: function(){
