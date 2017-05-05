@@ -98,7 +98,7 @@ addLoadEvent( function() {
 		return false;
 	});
 	
-	$('form.signup').on('Submit', function(){
+	$('form.signup').on('submit', function(){
 		
 		var obj = $(this),
 		url = obj.attr('action'),
@@ -117,8 +117,8 @@ addLoadEvent( function() {
 			url: url,
 			type: type,
 			data: data,
-			success: function(){
-				console.log("success");
+			success: function(response){
+				console.log(response);
 				var username = $("#s-Username").val();
 				var sPword = $("#signup-pWord").val();
 				var cPword = $("#confirm-pWord").val();
