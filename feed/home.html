@@ -53,7 +53,7 @@ function xmlLoaded(obj){
 
 addLoadEvent( function() {
 
-	var url = "http://feeds.bbci.co.uk/news/world/rss.xml";
+	var url = "	http://www.cbn.com/cbnnews/world/feed/";
 	
 	document.querySelector("#rss-feed").innerHTML = "<b>Loading news...</b>";
 	$("#rss-feed").fadeOut(250);
@@ -88,7 +88,7 @@ addLoadEvent( function() {
 				$('#logTitle').hide();
 				document.getElementById('stuff').removeAttribute('hidden');
 				$('form.login').trigger("reset");
-				alert(username + ", You're signed in!");
+				alert("You're signed in!");
 			},
 			error: function(){
 				console.log("Something went wrong.");
@@ -129,7 +129,7 @@ addLoadEvent( function() {
 					$('#logTitle').hide();
 					document.getElementById('stuff').removeAttribute('hidden');
 					$('form.login').trigger("reset");
-					alert(username + ", You're signed in!");
+					alert("You're signed in!");
 				}
 			},
 			error: function(){
