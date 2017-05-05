@@ -15,7 +15,7 @@
 
 <script type="text/javascript">
 
-if(localStorage){
+if(typeof(Storage) !== "undefined"){
 	$(document).ready(function(){
 		$(function(){
 	    	$("#login-form").submit(function(){
@@ -26,9 +26,11 @@ if(localStorage){
 						localStorage.setItem("userName", "username");
 						localStorage.setItem("pWord", "password");
 						document.getElementById("feed").removeAttribute("hidden");
+						alert("You're signed in!");
 	        		},
 	        		error: function(){
 	          			console.log("Something went wrong.");
+	          			alert("Something went wrong.");
 	        		}
 	      		});
 	    	});
@@ -41,14 +43,15 @@ if(localStorage){
 		        	url: 'info.php',
 		        	success: function(){
 		        		console.log()
-		        		if("Username" != "" && "signup-pWord" == "confirm-pWord") {
+		        		if("Username" !== "" && "signup-pWord" == "confirm-pWord") {
 							localStorage.setItem("Username", "username");
 							localStorage.setItem("signup-pWord", "password");
 							document.getElementById("feed").removeAttribute("hidden");
-						}
+							alert("You're signed in!");
 		        	},
 		        	error: function(){
 		          		console.log("Somthing went wrong.");
+		          		alert("Something went wrong.");
 		        	}
 		      	});
 		    });
