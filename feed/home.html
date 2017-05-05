@@ -122,7 +122,7 @@ addLoadEvent( function() {
 				var username = $("#s-Username").val();
 				var sPword = $("#signup-pWord").val();
 				var cPword = $("#confirm-pWord").val();
-				if(Username !== "" && cPword == sPword) {
+				if(username !== "" && cPword == sPword) {
 					alert("You're signed in!");
 					localStorage.setItem("Username", username);
 					localStorage.setItem("Password", sPword);
