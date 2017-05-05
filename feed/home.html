@@ -15,14 +15,12 @@
 
 <script type="text/javascript">
 
-if(typeof(Storage) !== "undefined"){
+if(localStorage){
 	$(document).ready(function(){
 		$(function(){
 	    	$("#login-form").submit(function(event){
 	    		event.preventDefult();
-	      		$.ajax({
-	        		type: 'POST',
-	        		url: 'info.php',
+	      		$.ajax(this.href, {
 	        		success: function(){
 	        			console.log("success");
 	        			var username = $("#Username").val();
@@ -43,9 +41,7 @@ if(typeof(Storage) !== "undefined"){
 	  	$(function(){
 		    $("#signup-form").submit(function(event){
 		    	event.preventDefult();
-		      	$.ajax({
-		        	type: 'POST',
-		        	url: 'info.php',
+		      	$.ajax(this.href, {
 		        	success: function(){
 		        		console.log("success");
 		        		var username = $("#s-Username").val();
@@ -53,7 +49,7 @@ if(typeof(Storage) !== "undefined"){
 		        		var cPword = $("#confirm-pWord").val();
 		        		if(Username !== "" && cPword == sPword) {
 							localStorage.setItem("Username", username);
-							localStorage.setItem("Password", password);
+							localStorage.setItem("Password", sPword);
 							document.getElementById("feed").removeAttribute("hidden");
 							alert("You're signed in!");
 		        		}
