@@ -84,7 +84,8 @@ addLoadEvent( function() {
 				var pWord = $("#Password").val();
 				localStorage.setItem("Username", username);
 				localStorage.setItem("Password", pWord);
-				document.getElementById('inital-forms').attr('hidden');
+				document.getElementById('#inital-forms').hide();
+				document.getElementById('#logTitle').hide();
 				document.getElementById('stuff').removeAttribute('hidden');
 				$('form.login').trigger("reset");
 				alert("You're signed in!");
@@ -125,7 +126,8 @@ addLoadEvent( function() {
 					alert("You're signed in!");
 					localStorage.setItem("Username", username);
 					localStorage.setItem("Password", sPword);
-					document.getElementById('#inital-forms').attr('hidden');
+					document.getElementById('#inital-forms').hide();
+					document.getElementById('#logTitle').hide();
 					document.getElementById("feed").removeAttribute("hidden");
 					$('form.signup').trigger("reset");
 					alert("You're signed in!");
