@@ -128,8 +128,8 @@ addLoadEvent( function() {
 					localStorage.setItem("Password", sPword);
 					$('#inital-forms').hide();
 					$('#logTitle').hide();
-					document.getElementByID('stuff').removeAttribute('hidden');
-					$('form.signup').trigger("reset");
+					document.getElementById('stuff').removeAttribute('hidden');
+					$('form.login').trigger("reset");
 					alert("You're signed in!");
 				}
 			},
