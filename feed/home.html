@@ -60,9 +60,6 @@ addLoadEvent( function() {
 	$.get(url).done(function(data){xmlLoaded(data);});
 
 	$('form.login').on('submit', function() {
-		//console.log("login form submitted");
-		//document.getElementById('stuff').removeAttribute('hidden');
-		//event.preventDefult();
 		
 		var obj = $(this),
 		url = obj.attr('action'),
@@ -83,12 +80,13 @@ addLoadEvent( function() {
 			data: data,
 			success: function(response){
 				console.log(response);
-				//var username = $("#Username").val();
-				//var pWord = $("#Password").val();
-				//localStorage.setItem("Username", username);
-				//localStorage.setItem("Password", pWord);
+				alert("You're signed in!");
+				var username = $("#Username").val();
+				var pWord = $("#Password").val();
+				localStorage.setItem("Username", username);
+				localStorage.setItem("Password", pWord);
+				document.getElementById('inital-forms').attr('hidden');
 				document.getElementById('stuff').removeAttribute('hidden');
-				//alert("You're signed in!");
 			},
 			error: function(){
 				console.log("Something went wrong.");
@@ -97,23 +95,37 @@ addLoadEvent( function() {
 		});
 		return false;
 	});
-	/*
-	$("#signup-form").submit(function(event){
-		console.log("signup form submitted");
-		//event.preventDefult();
-		document.getElementById('stuff').removeAttribute('hidden');
+	
+	$('form.signup').on('Submit', function(){
 		
+		var obj = $(this),
+		url = obj.attr('action'),
+		type = obj.attr('method'),
+		data = {};
+		
+		obj.find('[name]').each(function(index, value) {
+			var obj = $(this),
+			name = obj.attr('name'),
+			value = obj.val();
+			
+			data[name] = value;
+		});
+
 		$.ajax({
+			url: url,
+			type: type,
+			data: data,
 			success: function(){
 				console.log("success");
 				var username = $("#s-Username").val();
 				var sPword = $("#signup-pWord").val();
 				var cPword = $("#confirm-pWord").val();
 				if(Username !== "" && cPword == sPword) {
+					alert("You're signed in!");
 					localStorage.setItem("Username", username);
 					localStorage.setItem("Password", sPword);
+					document.getElementById('inital-forms').attr('hidden');
 					document.getElementById("feed").removeAttribute("hidden");
-					alert("You're signed in!");
 				}
 			},
 			error: function(){
@@ -121,11 +133,9 @@ addLoadEvent( function() {
 				alert("Something went wrong.");
 			}
 		});
-		
+		return false;
 	});
-	*/
 });
-
 </script>
 </head>
 
@@ -139,8 +149,8 @@ addLoadEvent( function() {
       	</div>
     </div>
 </div>
-<!-- Page Content -->
-<div class="container">
+<!-- Signup/Login Content -->
+<div id="inital-forms" class="container">
     <!-- Login/Signup Containers -->
 	<div class="row justify-content-md-center">
       	<div id="login-container" class="lsForm col-md-4 col-sm-4 justify-content-md-center">
@@ -157,20 +167,20 @@ addLoadEvent( function() {
           	</form>
         </div>
         <div id="signup-container" class="lsForm col-md-4 col-sm-4 justify-content-md-center">
-	        <form id="signup-form" method="POST">
+	        <form action="signupInfo.php" class="signup" method="post">
 	        	<div class="input-group input-group-sm">
 		            <span class="input-group-addon" id="username-addon">Username:</span>
-		            <input type="text" class="form-control form-control-sm" placeholder="Username" name="Username" id="s-Username" required>
+		            <input type="text" class="form-control form-control-sm" placeholder="Username" name="Username" required>
 		        </div><br>				
 				<div class="input-group input-group-sm">
 					<span class="input-group-addon" id="password-addon">Password:</span>
-		            <input type="password" class="form-control form-control-sm" placeholder="Password" id="signup-pWord" name="signup-pWord" required>
+		            <input type="password" class="form-control form-control-sm" placeholder="Password" name="signup-pWord" required>
 		        </div><br>
 				<div class="input-group input-group-sm">				
 					<span class="input-group-addon" id="password-addon">Confirm password:</span>
-		            <input type="password" class="form-control form-control-sm" placeholder="Confirm password" id="confirm-pWord" name="confirm-pWord" required>
+		            <input type="password" class="form-control form-control-sm" placeholder="Confirm password" name="confirm-pWord" required>
 	            </div><br>
-	            <button class="btn btn-info" type="submit">Sign up</button><br>
+	            <input class="btn btn-info" type="submit" value="Sign up"></input><br>
 			</form>
 		</div>
 	</div>
