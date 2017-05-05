@@ -14,8 +14,49 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	
-// add fuctionality here
+
+if(localStorage){
+	$(document).ready(function(){
+		$(function(){
+	    	$("#login-form").submit(function(){
+	      		$.ajax({
+	        		type: 'POST',
+	        		url: 'info.php',
+	        		success: function(){
+						localStorage.setItem("userName", "username");
+						localStorage.setItem("pWord", "password");
+						document.getElementById("feed").removeAttribute("hidden");
+	        		},
+	        		error: function(){
+	          			console.log("Something went wrong.");
+	        		}
+	      		});
+	    	});
+	  	});
+	  
+	  	$(function(){
+		    $("#signup-form").submit(function(){
+		      	$.ajax({
+		        	type: 'POST',
+		        	url: 'info.php',
+		        	success: function(){
+		        		console.log()
+		        		if("Username" != "" && "signup-pWord" == "confirm-pWord") {
+							localStorage.setItem("Username", "username");
+							localStorage.setItem("signup-pWord", "password");
+							document.getElementById("feed").removeAttribute("hidden");
+						}
+		        	},
+		        	error: function(){
+		          		console.log("Somthing went wrong.");
+		        	}
+		      	});
+		    });
+		});
+	});
+} else{
+    alert("Your browser do not support local storage.");
+}
 
 </script>
 </head>
@@ -26,7 +67,7 @@
 	<div id="header-container" class="header-container justify-content-md-center">
       	<div class="container text-center">
         	<h5>Welcome to Jeffrey Kotowicz's News Feed</h5>
-			<h5>login or sighup to start browsing</h5>
+			<h5>login or signup to start browsing</h5>
       	</div>
     </div>
 </div>
@@ -44,7 +85,7 @@
 		            <span class="input-group-addon" id="password-addon">Password:</span>
 		            <input type="password" class="form-control form-control-sm" placeholder="Password" name="pWord" required>
 		        </div><br>
-	            <button class="btn btn-info" type="submit">Login</button><br>
+	            <button id="login" class="btn btn-info" type="submit" name="login">Login</button><br>
           	</form>
         </div>
         <div id="signup-container" class="lsForm col-md-4 col-sm-4 justify-content-md-center">
@@ -55,13 +96,13 @@
 		        </div><br>				
 				<div class="input-group input-group-sm">
 					<span class="input-group-addon" id="password-addon">Password:</span>
-		            <input type="password" class="form-control form-control-sm" placeholder="Password" id="password" name="signup-pWord" required>
+		            <input type="password" class="form-control form-control-sm" placeholder="Password" id="signup-pWord" name="signup-pWord" required>
 		        </div><br>
 				<div class="input-group input-group-sm">				
 					<span class="input-group-addon" id="password-addon">Confirm password:</span>
 		            <input type="password" class="form-control form-control-sm" placeholder="Confirm password" id="confirm-pWord" name="confirm-pWord" required>
 	            </div><br>
-	            <button class="btn btn-info" type="submit">Sign up</button><br>
+	            <button id="signup" class="btn btn-info" type="submit" name="signup">Sign up</button><br>
 			</form>
 		</div>
 	</div>
@@ -74,9 +115,9 @@
 	</div>
 	<!-- RSS Feed -->
 	<div class="row">
-		<div class="col-md-12 col-sm-8">
-			<div class="container" id="rss-container">
-				<div id="rss-feed"></div>
+		<div class="col-md-10 col-sm-4 justify-content-md-center">
+			<div id="feed" hidden class="rss-container container justify-content-md-center">
+				<div id="rss-feed" class="text-center" >Place Holder</div>
 			</div>
 		</div>
 	</div>

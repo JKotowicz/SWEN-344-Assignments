@@ -13,8 +13,10 @@
 	color: #ffffff;
 }
 
-.col-md-14, .col-sm-10 {
-	background-color: #f9b942;
+.rss-container {
+	border: solid;
+	margin-top: 15px;
+	padding: 10px
 }
 
 body {
