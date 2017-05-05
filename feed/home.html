@@ -53,7 +53,7 @@ function xmlLoaded(obj){
 
 addLoadEvent( function() {
 
-	var url = "http://espn.go.com/espn/rss/nhl/news";
+	var url = "http://feeds.bbci.co.uk/news/world/rss.xml";
 	
 	document.querySelector("#rss-feed").innerHTML = "<b>Loading news...</b>";
 	$("#rss-feed").fadeOut(250);
@@ -88,7 +88,7 @@ addLoadEvent( function() {
 				$('#logTitle').hide();
 				document.getElementById('stuff').removeAttribute('hidden');
 				$('form.login').trigger("reset");
-				alert("You're signed in!");
+				alert(username + ", You're signed in!");
 			},
 			error: function(){
 				console.log("Something went wrong.");
@@ -123,14 +123,13 @@ addLoadEvent( function() {
 				var sPword = $("#signup-pWord").val();
 				var cPword = $("#confirm-pWord").val();
 				if(username !== "" && cPword == sPword) {
-					alert("You're signed in!");
 					localStorage.setItem("Username", username);
 					localStorage.setItem("Password", sPword);
 					$('#inital-forms').hide();
 					$('#logTitle').hide();
 					document.getElementById('stuff').removeAttribute('hidden');
 					$('form.login').trigger("reset");
-					alert("You're signed in!");
+					alert(username + ", You're signed in!");
 				}
 			},
 			error: function(){
