@@ -53,7 +53,7 @@ function xmlLoaded(obj){
 
 addLoadEvent( function() {
 
-	var url = "http://feeds.bbci.co.uk/news/technology/rss.xml";
+	var url = "http://espn.go.com/espn/rss/nhl/news";
 	
 	document.querySelector("#rss-feed").innerHTML = "<b>Loading news...</b>";
 	$("#rss-feed").fadeOut(250);
@@ -129,7 +129,7 @@ addLoadEvent( function() {
 					$('#logTitle').hide();
 					document.getElementById('stuff').removeAttribute('hidden');
 					$('form.login').trigger("reset");
-					alert("You're signed in!");
+					alert(", You're signed in!");
 				}
 			},
 			error: function(){
