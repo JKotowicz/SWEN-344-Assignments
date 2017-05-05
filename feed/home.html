@@ -98,7 +98,7 @@ addLoadEvent( function() {
 		return false;
 	});
 	
-	$('form.signup').on('submit', function(){
+	$('form.signup').on('submit', function() {
 		
 		var obj = $(this),
 		url = obj.attr('action'),
@@ -112,7 +112,7 @@ addLoadEvent( function() {
 			
 			data[name] = value;
 		});
-
+		
 		$.ajax({
 			url: url,
 			type: type,
@@ -134,7 +134,7 @@ addLoadEvent( function() {
 				}
 			},
 			error: function(){
-				console.log("Somthing went wrong.");
+				console.log("Something went wrong.");
 				alert("Something went wrong.");
 			}
 		});
